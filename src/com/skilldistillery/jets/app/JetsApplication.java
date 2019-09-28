@@ -32,7 +32,7 @@ public class JetsApplication {
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
 		System.out.println("Fly, Fight, Win!");
 		jetApp.launch();
-//		pw.printLine(printFleet);
+///		pw.printLine(printFleet);
 		jetApp.displayUserMenu();
 
 	}
@@ -97,6 +97,19 @@ public class JetsApplication {
 				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
 				 * CargoCarrier's loadCargo();
 				 */
+				// Try to turn this into way to look for CargoPlanes?
+//				try (BufferedReader bufIn = new BufferedReader(new FileReader("jets.txt"))) {
+//				      String line;
+//				      while ((line = bufIn.readLine()) != null) {
+//				        if (line.contains("manager")) {
+//				          System.out.println(line);
+//				        }
+//				      }
+//				    }
+//				    catch (IOException e) {
+//				      System.err.println(e);
+//				    }
+//				  
 
 				break;
 
