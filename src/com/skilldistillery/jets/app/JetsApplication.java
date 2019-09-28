@@ -146,7 +146,15 @@ public class JetsApplication {
 		kb.close();
 		System.exit(0);
 	}
-
+	
+	
+	private void writeEntireFleet(String outFileName, List<AirField> jets) {
+		try {
+			FileWriter fw = new FileWriter(outFileName);
+		    PrintWriter pw = new PrintWriter(fw);
+		}
+		
+	}
 
 	private List<Set<AirField>> readEntireFleet(List<AirField> jetsList, Set<AirField> jetsSet){
 		
