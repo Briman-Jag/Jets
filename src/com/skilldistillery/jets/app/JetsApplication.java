@@ -26,7 +26,8 @@ public class JetsApplication {
 	public static void main(String[] args) throws IOException {
 		String fileName = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
-		
+		List<Set<AirField>> jets = jetApp.readEntireFleet(fileName);
+		String outFileName = "jets.txt";
 
 		System.out.println("Welcome to the Jets Application where you are in control"
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
@@ -40,7 +41,7 @@ public class JetsApplication {
 	public void launch() {
 		List<AirField> jetsList = null;
 		Set<AirField> jetsSet = null;
-		
+
 		List<Set<String>> printFleet = readEntireFleet(jetsList, jetsSet);
 
 		// Jets already in airfield
@@ -51,7 +52,7 @@ public class JetsApplication {
 		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
 
 		Set<Jet> jetFleet = new HashSet<>();
-		
+
 	}
 
 	public void displayUserMenu() {
@@ -74,7 +75,7 @@ public class JetsApplication {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
 				System.out.println("Printing entire fleet: ");
-				
+
 				break;
 
 			case 2:
@@ -146,36 +147,47 @@ public class JetsApplication {
 		kb.close();
 		System.exit(0);
 	}
-	
-	
+
 	private void writeEntireFleet(String outFileName, List<AirField> jets) {
 		try {
 			FileWriter fw = new FileWriter(outFileName);
-		    PrintWriter pw = new PrintWriter(fw);
+			PrintWriter pw = new PrintWriter(fw);
+			for (Jet j : jets) {
+				StringBuilder sb = new StringBuilder();
+				sb.append("Model: " + j.getModel());
+				sb.append('\t');
+				sb.append("Speed: " + j.getSpeed());
+				sb.append('\t');
+				sb.append("Range: " + j.getRange());
+				sb.append('\t');
+				sb.append("Price: " + j.getPrice());
+				pw.println(sb);
+			}
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
+
 	}
 
-	private List<Set<AirField>> readEntireFleet(List<AirField> jetsList, Set<AirField> jetsSet){
-		
+	private List<Set<AirField>> readEntireFleet(String fileName) {
+
 		List<Set<AirField>> jetsListSet = new ArrayList<>();
 		try {
 			FileReader fr = new FileReader("jets.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String name;
 			while ((name = br.readLine()) != null) {
-                jetsListSet.add(name);
-            }
-            br.close();
-		
+				jetsListSet.add(name);
+			}
+			br.close();
+
 		} catch (FileNotFoundException e) {
-            System.err.println("Invalid filename: " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println("Problem while reading: " + e.getMessage());
-        }
-		
-		
-		
+			System.err.println("Invalid filename: " + e.getMessage());
+		} catch (IOException e) {
+			System.err.println("Problem while reading: " + e.getMessage());
+		}
+
 		return jetsListSet;
 	}
 
