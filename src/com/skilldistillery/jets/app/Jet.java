@@ -15,7 +15,7 @@ public abstract class Jet {
 	}
 
 	public void fly() {
-		System.out.println("*Flys* Fly, Fight, Win!");
+		System.out.println("*Flys*");
 	}
 	
 	public double getSpeedInMach() {
@@ -55,6 +55,11 @@ public abstract class Jet {
 
 	public void setPrice(long price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Jet [Model: " + model + ", speed: " + speed + ", range: " + range + ", price: $" + price + "]";
 	}
 
 	@Override

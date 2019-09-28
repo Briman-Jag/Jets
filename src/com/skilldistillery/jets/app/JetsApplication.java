@@ -24,8 +24,11 @@ public class JetsApplication {
 	public static void main(String[] args) throws IOException {
 		JetsApplication jetApp = new JetsApplication();
 		try {
-			FileWriter fw = new FileWriter("jets.txt");
-			PrintWriter pw = new PrintWriter(fw);
+			File f = new File("jets.txt");
+			if(!f.exists()) {
+				f.createNewFile();
+			}
+			PrintWriter pw = new PrintWriter(f);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -34,6 +37,8 @@ public class JetsApplication {
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
 		System.out.println("Fly, Fight, Win!");
 		jetApp.launch();
+//		pw.printLine(printFleet);
+		jetApp.displayUserMenu();
 
 	}
 
@@ -50,6 +55,7 @@ public class JetsApplication {
 		Jet j4 = new CargoPlane("C-130 Hercules", 336, 2360, 30_001_000);
 		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
 
+		
 	}
 
 	public void displayUserMenu() {
