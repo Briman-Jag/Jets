@@ -3,11 +3,13 @@ package com.skilldistillery.jets.app;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -22,16 +24,9 @@ public class JetsApplication {
 	}
 
 	public static void main(String[] args) throws IOException {
+		String fileName = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
-		try {
-			File f = new File("jets.txt");
-			if(!f.exists()) {
-				f.createNewFile();
-			}
-			PrintWriter pw = new PrintWriter(f);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		
 
 		System.out.println("Welcome to the Jets Application where you are in control"
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
@@ -55,6 +50,7 @@ public class JetsApplication {
 		Jet j4 = new CargoPlane("C-130 Hercules", 336, 2360, 30_001_000);
 		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
 
+		Set<Jet> jetFleet = new HashSet<>();
 		
 	}
 
@@ -141,8 +137,21 @@ public class JetsApplication {
 
 	private List<Set<AirField>> readEntireFleet(List<AirField> jetsList, Set<AirField> jetsSet){
 		
-		BufferedReader reader = null;
 		List<Set<AirField>> jetsListSet = new ArrayList<>();
+		try {
+			FileReader fr = new FileReader("jets.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String name;
+			while ((name = br.readLine()) != null) {
+                jetsListSet.add(name);
+            }
+            br.close();
+		
+		} catch (FileNotFoundException e) {
+            System.err.println("Invalid filename: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Problem while reading: " + e.getMessage());
+        }
 		
 		
 		
