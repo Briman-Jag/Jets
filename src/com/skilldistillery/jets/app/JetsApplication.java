@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -26,13 +27,13 @@ public class JetsApplication {
 	public static void main(String[] args) throws IOException {
 		String fileName = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
-		List<Set<AirField>> jets = jetApp.readEntireFleet(fileName);
+		jetApp.launch();
+		List<Set<AirField>> jets = jetApp.writeEntireFleet(fileName, List<String> jets);
 		String outFileName = "jets.txt";
 
 		System.out.println("Welcome to the Jets Application where you are in control"
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
 		System.out.println("Fly, Fight, Win!");
-		jetApp.launch();
 ///		pw.printLine(printFleet);
 		jetApp.displayUserMenu();
 
@@ -74,8 +75,8 @@ public class JetsApplication {
 			switch (choice) {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
-				System.out.println("Printing entire fleet: ");
-
+				System.out.println("Printing entire fleet: " + printFleet);
+				
 				break;
 
 			case 2:
@@ -147,6 +148,14 @@ public class JetsApplication {
 		kb.close();
 		System.exit(0);
 	}
+	
+	public List<Set<AirField>> parseNames( Collection<String> names){
+		List<Set<AirField>> result = new ArrayList<>();
+		
+		
+		return result;
+		
+	}
 
 	private void writeEntireFleet(String outFileName, List<AirField> jets) {
 		try {
@@ -170,7 +179,7 @@ public class JetsApplication {
 
 	}
 
-	private List<Set<AirField>> readEntireFleet(String fileName) {
+	private List<Set<AirField>> readEntireFleet(List<AirField> jetsList, Set<AirField> jetsSet) {
 
 		List<Set<AirField>> jetsListSet = new ArrayList<>();
 		try {
