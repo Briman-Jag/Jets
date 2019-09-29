@@ -28,7 +28,7 @@ public class JetsApplication {
 		String fileName = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
 		jetApp.launch();
-		List<Set<AirField>> jets = jetApp.writeEntireFleet(fileName, List<String> jets);
+		List<String> jets = jetApp.writeEntireFleet(fileName);
 		String outFileName = "jets.txt";
 
 		System.out.println("Welcome to the Jets Application where you are in control"
@@ -41,9 +41,8 @@ public class JetsApplication {
 
 	public void launch() {
 		List<AirField> jetsList = null;
-		Set<AirField> jetsSet = null;
 
-		List<Set<String>> printFleet = readEntireFleet(jetsList, jetsSet);
+		List<AirField> printFleet = readEntireFleet(jetsList);
 
 		// Jets already in airfield
 		Jet j1 = new FighterJet("F-15E Strike Eagle", 1875.0, 2992, 31_001_000);
@@ -51,8 +50,6 @@ public class JetsApplication {
 		Jet j3 = new CargoPlane("C-5M Super Galaxy", 518, 8056, 100_037_000);
 		Jet j4 = new CargoPlane("C-130 Hercules", 336, 2360, 30_001_000);
 		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
-
-		Set<Jet> jetFleet = new HashSet<>();
 
 	}
 
@@ -149,15 +146,15 @@ public class JetsApplication {
 		System.exit(0);
 	}
 	
-	public List<Set<AirField>> parseNames( Collection<String> names){
-		List<Set<AirField>> result = new ArrayList<>();
+	public List<AirField> parseNames( List<String> names){
+		List<AirField> result = new ArrayList<>();
 		
 		
 		return result;
 		
 	}
 
-	private void writeEntireFleet(String outFileName, List<AirField> jets) {
+	private void writeEntireFleet(String outFileName, List<String> jets) {
 		try {
 			FileWriter fw = new FileWriter(outFileName);
 			PrintWriter pw = new PrintWriter(fw);
@@ -179,13 +176,14 @@ public class JetsApplication {
 
 	}
 
-	private List<Set<AirField>> readEntireFleet(List<AirField> jetsList, Set<AirField> jetsSet) {
+	private List<String> readEntireFleet(String jetsList) {
 
-		List<Set<AirField>> jetsListSet = new ArrayList<>();
+		List<String> jetsListSet = new ArrayList<>();
 		try {
 			FileReader fr = new FileReader("jets.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String name;
+			
 			while ((name = br.readLine()) != null) {
 				jetsListSet.add(name);
 			}

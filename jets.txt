@@ -1,0 +1,5 @@
+F-15E Strike Eagle, 1875.0, 2992, 31_001_000
+A-10 Warthog, 2240, 2578, 31_001_000
+C-5M Super Galaxy, 518, 8056, 100_037_000
+C-130 Hercules, 336, 2360, 30_001_000
+Cessna Citation XLS, 498, 1961, 13_700_000
