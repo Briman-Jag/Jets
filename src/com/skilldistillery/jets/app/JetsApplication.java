@@ -25,9 +25,20 @@ public class JetsApplication {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String fileName = "jets.txt";
+		String file = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
+		try {
+		BufferedReader bufReader = new BufferedReader(new FileReader(file));
+		List<String> jetsList = new ArrayList<>();
+		
+		String line = bufReader.readLine();
+		while (line != null) {
+			jetsList.add(line);
+			line = bufReader.readLine();
+		}
+		bufReader.close();
 		jetApp.launch();
+		
 		List<String> jets = jetApp.writeEntireFleet(fileName);
 		String outFileName = "jets.txt";
 
@@ -40,16 +51,16 @@ public class JetsApplication {
 	}
 
 	public void launch() {
-		List<AirField> jetsList = null;
+		List<String> jetsList = null;
 
-		List<AirField> printFleet = readEntireFleet(jetsList);
+		List<String> printFleet = readEntireFleet(jetsList);
 
 		// Jets already in airfield
-		Jet j1 = new FighterJet("F-15E Strike Eagle", 1875.0, 2992, 31_001_000);
-		Jet j2 = new FighterJet("A-10 Warthog", 2240, 2578, 31_001_000);
-		Jet j3 = new CargoPlane("C-5M Super Galaxy", 518, 8056, 100_037_000);
-		Jet j4 = new CargoPlane("C-130 Hercules", 336, 2360, 30_001_000);
-		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
+//		Jet j1 = new FighterJet("F-15E Strike Eagle", 1875.0, 2992, 31_001_000);
+//		Jet j2 = new FighterJet("A-10 Warthog", 2240, 2578, 31_001_000);
+//		Jet j3 = new CargoPlane("C-5M Super Galaxy", 518, 8056, 100_037_000);
+//		Jet j4 = new CargoPlane("C-130 Hercules", 336, 2360, 30_001_000);
+//		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
 
 	}
 
@@ -73,7 +84,7 @@ public class JetsApplication {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
 				System.out.println("Printing entire fleet: " + printFleet);
-				
+
 				break;
 
 			case 2:
@@ -145,34 +156,33 @@ public class JetsApplication {
 		kb.close();
 		System.exit(0);
 	}
-	
-	public List<AirField> parseNames( List<String> names){
+
+	public List<AirField> parseNames(List<String> names) {
 		List<AirField> result = new ArrayList<>();
-		
-		
+
 		return result;
-		
+
 	}
 
-	private void writeEntireFleet(String outFileName, List<String> jets) {
-		try {
-			FileWriter fw = new FileWriter(outFileName);
-			PrintWriter pw = new PrintWriter(fw);
-			for (Jet j : jets) {
-				StringBuilder sb = new StringBuilder();
-				sb.append("Model: " + j.getModel());
-				sb.append('\t');
-				sb.append("Speed: " + j.getSpeed());
-				sb.append('\t');
-				sb.append("Range: " + j.getRange());
-				sb.append('\t');
-				sb.append("Price: " + j.getPrice());
-				pw.println(sb);
-			}
-			pw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//	private void writeEntireFleet(String outFileName, List<String> jets) {
+//		try {
+//			FileWriter fw = new FileWriter(outFileName);
+//			PrintWriter pw = new PrintWriter(fw);
+//			for (Jet j : jets) {
+//				StringBuilder sb = new StringBuilder();
+//				sb.append("Model: " + j.getModel());
+//				sb.append('\t');
+//				sb.append("Speed: " + j.getSpeed());
+//				sb.append('\t');
+//				sb.append("Range: " + j.getRange());
+//				sb.append('\t');
+//				sb.append("Price: " + j.getPrice());
+//				pw.println(sb);
+//			}
+//			pw.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 
@@ -183,7 +193,7 @@ public class JetsApplication {
 			FileReader fr = new FileReader("jets.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String name;
-			
+
 			while ((name = br.readLine()) != null) {
 				jetsListSet.add(name);
 			}
