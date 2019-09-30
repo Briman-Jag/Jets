@@ -41,16 +41,6 @@ public class JetsApplication {
 	}
 
 	public void launch() {
-//		List<String> jetsList = null;
-
-//		List<String> printFleet = readEntireFleet(jetsList);
-
-		// Jets already in airfield
-//		Jet j1 = new FighterJet("F-15E Strike Eagle", 1875.0, 2992, 31_001_000);
-//		Jet j2 = new FighterJet("A-10 Warthog", 2240, 2578, 31_001_000);
-//		Jet j3 = new CargoPlane("C-5M Super Galaxy", 518, 8056, 100_037_000);
-//		Jet j4 = new CargoPlane("C-130 Hercules", 336, 2360, 30_001_000);
-//		Jet j5 = new JetReg("Cessna Citation XLS", 498, 1961, 13_700_000);
 
 	}
 
@@ -175,16 +165,39 @@ public class JetsApplication {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String line;
-
-			while ((line = br.readLine()) != null) {
+			int counter = 0;
+			while (((line = br.readLine()) != null) && counter < 3) {
 				String[] jetInfo = line.split(", ");
 				String model = jetInfo[0];
 				double speed = Double.parseDouble(jetInfo[1]);
 				int range = Integer.parseInt(jetInfo[2]);
 				long price = Long.parseLong(jetInfo[3]);
 
-				Jet j = new FighterJet(model, speed, range, price);
-				jets.add(j);
+				Jet fJ = new FighterJet(model, speed, range, price);
+				jets.add(fJ);
+				counter++;
+			}
+			while (((line = br.readLine()) != null) && counter < 5) {
+				String[] jetInfo = line.split(", ");
+				String model = jetInfo[0];
+				double speed = Double.parseDouble(jetInfo[1]);
+				int range = Integer.parseInt(jetInfo[2]);
+				long price = Long.parseLong(jetInfo[3]);
+
+				Jet cJ = new CargoPlane(model, speed, range, price);
+				jets.add(cJ);
+				counter++;
+			}
+			while (((line = br.readLine()) != null) && counter < 6) {
+				String[] jetInfo = line.split(", ");
+				String model = jetInfo[0];
+				double speed = Double.parseDouble(jetInfo[1]);
+				int range = Integer.parseInt(jetInfo[2]);
+				long price = Long.parseLong(jetInfo[3]);
+
+				Jet rJ = new JetReg(model, speed, range, price);
+				jets.add(rJ);
+				counter++;
 			}
 			br.close();
 
