@@ -154,6 +154,16 @@ public class JetsApplication {
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			while (((line = br.readLine()) != null)) {
+					// Attempt at for loop to read all
+//				for (Jet j : jets) {
+//					String[] jetInfo = line.split(", ");
+//					String model = jetInfo[0];
+//					double speed = Double.parseDouble(jetInfo[1]);
+//					int range = Integer.parseInt(jetInfo[2]);
+//					long price = Long.parseLong(jetInfo[3]);
+//					Jet fJ = new FighterJet(model, speed, range, price);
+//					jets.add(fJ);
+////				}
 				int jetNum = 0;
 				if (jetNum < 5) {
 					String[] jetInfo = line.split(", ");
@@ -165,27 +175,17 @@ public class JetsApplication {
 					Jet fJ = new FighterJet(model, speed, range, price);
 					jets.add(fJ);
 					++jetNum;
-				} //else if (jetNum < 5) {
+//				for (int i = 0; i < jetInfo.length; i++) {
 //					String[] jetInfo = line.split(", ");
 //					String model = jetInfo[0];
 //					double speed = Double.parseDouble(jetInfo[1]);
 //					int range = Integer.parseInt(jetInfo[2]);
 //					long price = Long.parseLong(jetInfo[3]);
-//
-//					Jet cJ = new CargoPlane(model, speed, range, price);
-//					jets.add(cJ);
-//					++jetNum;
-//				} else if (jetNum < 6) {
-//					String[] jetInfo = line.split(", ");
-//					String model = jetInfo[0];
-//					double speed = Double.parseDouble(jetInfo[1]);
-//					int range = Integer.parseInt(jetInfo[2]);
-//					long price = Long.parseLong(jetInfo[3]);
-//
-//					Jet rJ = new JetReg(model, speed, range, price);
-//					jets.add(rJ);
-//					++jetNum;
+//					
+//					Jet j = new Jet(model, speed, range, price);
+//					jets.add(j);
 //				}
+				}
 			}
 
 			br.close();
