@@ -45,6 +45,7 @@ public class JetsApplication {
 		
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
+		airField.addJet(null);
 //		jetList.writeEntireFleet(outFileName, jets);
 //		System.out.println(jetsList);
 		boolean cont = true;
@@ -89,8 +90,9 @@ public class JetsApplication {
 				/*
 				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
 				 * CargoCarrier's loadCargo();
+				 * Use instanceof
 				 */
-			  
+				
 
 				break;
 
@@ -98,6 +100,7 @@ public class JetsApplication {
 				/*
 				 * Analyzes entire fleet for jets of type FighterJet and initiates implemented
 				 * CombatReady's fight();
+				 * Use instanceof
 				 */
 
 				break;
@@ -143,9 +146,10 @@ public class JetsApplication {
 		return longest;
 	}
 	
-	private Jet[] createJets(List<Jet> jets) {
-		
-	}
+//	private Jet[] createJets(List<Jet> jets) {
+//		
+//		return jets;
+//	}
 	private List<Jet> readJets(String file) {
 
 		List<Jet> jets = new ArrayList<>();

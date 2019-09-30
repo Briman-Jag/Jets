@@ -1,5 +1,7 @@
 package com.skilldistillery.jets.app;
 
+import java.util.List;
+
 public class AirField {
 
 	private Jet[] jets;
@@ -9,9 +11,9 @@ public class AirField {
 
 	}
 
-	public void allFly(Jet[] jet) {
-		for (int i = 0; i < jet.length; i++) {
-			Jet j = jet[i];
+	public void allFly(Jet[] jets) {
+		for (int i = 0; i < jets.length; i++) {
+			Jet j = jets[i];
 			j.fly();
 
 		}
@@ -22,5 +24,7 @@ public class AirField {
 		currentJetIndex++;
 
 	}
+
+
 
 }
