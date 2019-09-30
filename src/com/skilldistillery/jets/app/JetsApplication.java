@@ -16,35 +16,36 @@ import java.util.Scanner;
 public class JetsApplication {
 
 	AirField airField = new AirField();
-	Scanner kb = new Scanner(System.in);
+	static Scanner kb = new Scanner(System.in);
 
 	public JetsApplication() {
 
 	}
 
 	public static void main(String[] args) throws IOException {
+
+		launch();
+
+///		pw.printLine(printFleet);
+//		jetApp.displayUserMenu();
+	}
+
+	private static void launch() throws IOException {
+		System.out.println("Welcome to the Jets Application! You are in control"
+				+ " of aircraft worth millions and millions of dollars! No Pressure!");
+		System.out.println("Fly, Fight, Win!");
+		
+		displayUserMenu();
+//		System.out.println(jetsList);
+
+	}
+
+	private static void displayUserMenu() throws IOException {
 		JetsApplication jetApp = new JetsApplication();
 		String file = "jets.txt";
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
-
-		System.out.println(jetsList);
 		bufReader.close();
-		jetApp.launch();
-
-		System.out.println("Welcome to the Jets Application! You are in control"
-				+ " of aircraft worth millions and millions of dollars! No Pressure!");
-		System.out.println("Fly, Fight, Win!");
-///		pw.printLine(printFleet);
-//		jetApp.displayUserMenu();
-
-	}
-
-	public void launch() {
-
-	}
-
-	public void displayUserMenu() {
 		boolean cont = true;
 		int choice;
 		do {
@@ -63,7 +64,8 @@ public class JetsApplication {
 			switch (choice) {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
-				System.out.println("Printing entire fleet: " + jetList);
+				System.out.println("Printing entire fleet: " + "\n" + jetsList);
+				
 
 				break;
 
