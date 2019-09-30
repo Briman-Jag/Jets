@@ -42,10 +42,10 @@ public class JetsApplication {
 	private static void displayUserMenu() throws IOException {
 		JetsApplication jetApp = new JetsApplication();
 		String file = "jets.txt";
-		
+
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
-		airField.addJet(null);
+//		airField.addJet();
 //		jetList.writeEntireFleet(outFileName, jets);
 //		System.out.println(jetsList);
 		boolean cont = true;
@@ -78,7 +78,7 @@ public class JetsApplication {
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-				
+
 				break;
 
 			case 4:
@@ -89,18 +89,15 @@ public class JetsApplication {
 			case 5:
 				/*
 				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
-				 * CargoCarrier's loadCargo();
-				 * Use instanceof
+				 * CargoCarrier's loadCargo(); Use instanceof
 				 */
-				
 
 				break;
 
 			case 6:
 				/*
 				 * Analyzes entire fleet for jets of type FighterJet and initiates implemented
-				 * CombatReady's fight();
-				 * Use instanceof
+				 * CombatReady's fight(); Use instanceof
 				 */
 
 				break;
@@ -131,21 +128,20 @@ public class JetsApplication {
 		System.exit(0);
 	}
 
-	private double fastestJet(List<Jet> jets) {
-		double fastest = 0;
-//		for (Jet j : jets) {
+//	private double fastestJet(List<Jet> jets) {
+//		double fastest = 0;
+////		for (Jet j : jets) {
+//
+////		}
+//		return fastest;
+//	}
 
-//		}
-		return fastest;
-	}
-	
-	private int longestRange(List<Jet> jets) {
-		int longest = 0;
-	
-		
-		return longest;
-	}
-	
+//	private int longestRange(List<Jet> jets) {
+//		int longest = 0;
+//
+//		return longest;
+//	}
+
 //	private Jet[] createJets(List<Jet> jets) {
 //		
 //		return jets;
@@ -159,37 +155,37 @@ public class JetsApplication {
 			String line;
 			while (((line = br.readLine()) != null)) {
 				int jetNum = 0;
-				if (jetNum < 3) {
+				if (jetNum < 5) {
 					String[] jetInfo = line.split(", ");
 					String model = jetInfo[0];
 					double speed = Double.parseDouble(jetInfo[1]);
 					int range = Integer.parseInt(jetInfo[2]);
 					long price = Long.parseLong(jetInfo[3]);
-
+					
 					Jet fJ = new FighterJet(model, speed, range, price);
 					jets.add(fJ);
 					++jetNum;
-				} else if (jetNum < 5) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet cJ = new CargoPlane(model, speed, range, price);
-					jets.add(cJ);
-					++jetNum;
-				} else if (jetNum < 6) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet rJ = new JetReg(model, speed, range, price);
-					jets.add(rJ);
-					++jetNum;
-				}
+				} //else if (jetNum < 5) {
+//					String[] jetInfo = line.split(", ");
+//					String model = jetInfo[0];
+//					double speed = Double.parseDouble(jetInfo[1]);
+//					int range = Integer.parseInt(jetInfo[2]);
+//					long price = Long.parseLong(jetInfo[3]);
+//
+//					Jet cJ = new CargoPlane(model, speed, range, price);
+//					jets.add(cJ);
+//					++jetNum;
+//				} else if (jetNum < 6) {
+//					String[] jetInfo = line.split(", ");
+//					String model = jetInfo[0];
+//					double speed = Double.parseDouble(jetInfo[1]);
+//					int range = Integer.parseInt(jetInfo[2]);
+//					long price = Long.parseLong(jetInfo[3]);
+//
+//					Jet rJ = new JetReg(model, speed, range, price);
+//					jets.add(rJ);
+//					++jetNum;
+//				}
 			}
 
 			br.close();
