@@ -26,7 +26,7 @@ public class JetsApplication {
 		JetsApplication jetApp = new JetsApplication();
 		String file = "jets.txt";
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
-		List<AirField> jetsList = jetApp.readJets(file);
+		List<Jet> jetsList = jetApp.readJets(file);
 
 		System.out.println(jetsList);
 		bufReader.close();
@@ -168,9 +168,9 @@ public class JetsApplication {
 //		}
 //	}
 
-	private List<AirField> readJets(String file) {
+	private List<Jet> readJets(String file) {
 
-		List<AirField> jets = new ArrayList<>();
+		List<Jet> jets = new ArrayList<>();
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
@@ -181,9 +181,9 @@ public class JetsApplication {
 				String model = jetInfo[0];
 				double speed = Double.parseDouble(jetInfo[1]);
 				int range = Integer.parseInt(jetInfo[2]);
-				double price = Double.parseDouble(jetInfo[3]);
+				long price = Long.parseLong(jetInfo[3]);
 
-				Jet j = new Jet(model, speed, range, price);
+				Jet j = new FighterJet(model, speed, range, price);
 				jets.add(j);
 			}
 			br.close();
