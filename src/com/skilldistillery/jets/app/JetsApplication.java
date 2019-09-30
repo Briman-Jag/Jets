@@ -41,7 +41,7 @@ public class JetsApplication {
 	}
 
 	public void launch() {
-		List<String> jetsList = null;
+//		List<String> jetsList = null;
 
 //		List<String> printFleet = readEntireFleet(jetsList);
 
@@ -192,7 +192,7 @@ public class JetsApplication {
 			System.err.println("Problem while reading: " + e.getMessage());
 		}
 
-		return jetsList;
+		return jets;
 	}
 
 }
