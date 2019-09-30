@@ -154,7 +154,8 @@ public class JetsApplication {
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			while (((line = br.readLine()) != null)) {
-					// Attempt at for loop to read all
+				int jetNum = 1;
+				// Attempt at for loop to read all
 //				for (Jet j : jets) {
 //					String[] jetInfo = line.split(", ");
 //					String model = jetInfo[0];
@@ -164,33 +165,66 @@ public class JetsApplication {
 //					Jet fJ = new FighterJet(model, speed, range, price);
 //					jets.add(fJ);
 ////				}
-				int jetNum = 0;
-				if (jetNum < 5) {
+				// Works for printing entire fleet, but don't think this is most helpful with
+				// anything else.
+				if (jetNum == 1) {
 					String[] jetInfo = line.split(", ");
 					String model = jetInfo[0];
 					double speed = Double.parseDouble(jetInfo[1]);
 					int range = Integer.parseInt(jetInfo[2]);
 					long price = Long.parseLong(jetInfo[3]);
-					
-					Jet fJ = new FighterJet(model, speed, range, price);
-					jets.add(fJ);
+
+					Jet fJ1 = new FighterJet(model, speed, range, price);
+					jets.add(fJ1);
 					++jetNum;
-//				for (int i = 0; i < jetInfo.length; i++) {
-//					String[] jetInfo = line.split(", ");
-//					String model = jetInfo[0];
-//					double speed = Double.parseDouble(jetInfo[1]);
-//					int range = Integer.parseInt(jetInfo[2]);
-//					long price = Long.parseLong(jetInfo[3]);
-//					
-//					Jet j = new Jet(model, speed, range, price);
-//					jets.add(j);
-//				}
+				} else if (jetNum == 2) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
+
+					Jet fJ1 = new FighterJet(model, speed, range, price);
+					jets.add(fJ1);
+					++jetNum;
+				} else if (jetNum == 3) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
+
+					Jet cP1 = new CargoPlane(model, speed, range, price);
+					jets.add(cP1);
+					++jetNum;
+				} else if (jetNum == 4) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
+
+					Jet cP2 = new CargoPlane(model, speed, range, price);
+					jets.add(cP2);
+					++jetNum;
+				} else if (jetNum == 5) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
+
+					Jet jR1 = new JetReg(model, speed, range, price);
+					jets.add(jR1);
+					++jetNum;
 				}
+
+
 			}
-
 			br.close();
+		} catch (
 
-		} catch (IOException e) {
+		IOException e) {
 			System.err.println("Problem while reading: " + e.getMessage());
 		}
 
