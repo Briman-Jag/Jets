@@ -78,9 +78,9 @@ public class JetsApplication {
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-				if(airField.fJ1.getSpeed() > fJ2.getSpeed()) {
+	//			if(airField.fJ1.getSpeed() > fJ2.getSpeed()) {
 					
-				}
+//				}
 				break;
 
 			case 4:
