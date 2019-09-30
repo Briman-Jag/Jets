@@ -23,17 +23,11 @@ public class JetsApplication {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String file = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
-
+		String file = "jets.txt";
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
-		List<Jet> jetsList = jetApp.readJets(file);
+		List<AirField> jetsList = jetApp.readJets(file);
 
-		String line = bufReader.readLine();
-		while (line != null) {
-			jetsList.add(line);
-			line = bufReader.readLine();
-		}
 		System.out.println(jetsList);
 		bufReader.close();
 		jetApp.launch();
@@ -153,13 +147,6 @@ public class JetsApplication {
 		System.exit(0);
 	}
 
-	public List<AirField> parseNames(List<String> names) {
-		List<AirField> result = new ArrayList<>();
-
-		return result;
-
-	}
-
 //	private void writeEntireFleet(String outFileName, List<String> jets) {
 //		try {
 //			FileWriter fw = new FileWriter(outFileName);
@@ -181,17 +168,20 @@ public class JetsApplication {
 //		}
 //	}
 
-	private List<Jet> readJets(String file) {
+	private List<AirField> readJets(String file) {
 
-		List<Jet> jets = new ArrayList<>();
+		List<AirField> jets = new ArrayList<>();
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 
 			while ((line = br.readLine()) != null) {
-				Jet[] jetInfo = line.split(", ");
-				String name = jetList[0];
+				String[] jetInfo = line.split(", ");
+				String model = jetInfo[0];
+				double speed = Double.parseDouble(jetInfo[1]);
+				int range = Integer.parseInt(jetInfo[2]);
+				double price = Double.parseDouble(jetInfo[3]);
 
 				Jet j = new Jet(model, speed, range, price);
 				jets.add(j);
