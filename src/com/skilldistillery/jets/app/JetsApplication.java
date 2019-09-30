@@ -22,7 +22,7 @@ public class JetsApplication {
 
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
 		launch();
 
@@ -50,7 +50,7 @@ public class JetsApplication {
 //		System.out.println(jetsList);
 		boolean cont = true;
 		int choice;
-		
+
 		do {
 			System.out.println("**********______Main Menu______**********");
 			System.out.println("Please choose from the options below: ");
@@ -73,14 +73,13 @@ public class JetsApplication {
 
 			case 2:
 				// Initiates entire fleet of planes to use fly method
-				airField.allFly(null);
+//				airField.allFly(null);
+
 				break;
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-	//			if(airField.fJ1.getSpeed() > fJ2.getSpeed()) {
-					
-//				}
+				
 				break;
 
 			case 4:
@@ -93,7 +92,15 @@ public class JetsApplication {
 				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
 				 * CargoCarrier's loadCargo(); Use instanceof
 				 */
+				Jet cP = new CargoPlane();
+				for (Jet cargo : jetsList) {
+					if ((cP instanceof CargoPlane)) {
+						(Jet)cP.loadCargo();
 
+						System.out.println();
+
+					}
+				}
 				break;
 
 			case 6:
@@ -101,6 +108,14 @@ public class JetsApplication {
 				 * Analyzes entire fleet for jets of type FighterJet and initiates implemented
 				 * CombatReady's fight(); Use instanceof
 				 */
+//				Jet fJ = new FighterJet();
+//				for (Jet jet : jetsList) {
+//					if ((fJ instanceof FighterJet).fight()) {
+//				 FighterJet jetFight = (FighterJet) dogFight;
+//				 jetFight.fight();
+//						System.out.println();
+//					}
+//				}
 
 				break;
 
@@ -131,19 +146,24 @@ public class JetsApplication {
 		System.exit(0);
 	}
 
-//	private double fastestJet(double speed) {
-//		double fastest = 0;
-//		if(fJ1.getSpeed() > fJ2.getSpeed()) {
-//			
-//	}
-//		return fastest;
-//	}
+	private double fastestJet(double speed) {
+		double fastest = 0;
+		for( int i = 1; i < : speed) {
+			
+		}
+		
+		return fastest;
+	}
 
-//	private int longestRange(List<Jet> jets) {
-//		int longest = 0;
-//
-//		return longest;
-//	}
+	private int longestRange(List<Jet> jets) {
+		int longest = 0;
+		for (Jet l : jets) {
+			if (longest < ((Jet) jets).getRange()) {
+				longest = ((Jet) jets).getRange();
+			}
+		}
+		return longest;
+	}
 
 //	private Jet[] createJets(List<Jet> jets) {
 //		
@@ -221,7 +241,6 @@ public class JetsApplication {
 					jets.add(jR1);
 					++jetNum;
 				}
-
 
 			}
 			br.close();
