@@ -1,7 +1,6 @@
 package com.skilldistillery.jets.app;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,7 +12,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class JetsApplication {
 
@@ -29,7 +27,7 @@ public class JetsApplication {
 		JetsApplication jetApp = new JetsApplication();
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
-		List<String> jetsList = new ArrayList<>();
+		List<Jet> jetsList = jetApp.readJets(file);
 
 		String line = bufReader.readLine();
 		while (line != null) {
@@ -183,26 +181,28 @@ public class JetsApplication {
 //		}
 //	}
 
-	private List<String> readEntireFleet(String jetsList) {
+	private List<Jet> readJets(String file) {
 
-		List<String> jetsListSet = new ArrayList<>();
+		List<Jet> jets = new ArrayList<>();
 		try {
-			FileReader fr = new FileReader("jets.txt");
+			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			String name;
+			String line;
 
-			while ((name = br.readLine()) != null) {
-				jetsListSet.add(name);
+			while ((line = br.readLine()) != null) {
+				Jet[] jetInfo = line.split(", ");
+				String name = jetList[0];
+
+				Jet j = new Jet(model, speed, range, price);
+				jets.add(j);
 			}
 			br.close();
 
-		} catch (FileNotFoundException e) {
-			System.err.println("Invalid filename: " + e.getMessage());
 		} catch (IOException e) {
 			System.err.println("Problem while reading: " + e.getMessage());
 		}
 
-		return jetsListSet;
+		return jetsList;
 	}
 
 }
