@@ -34,9 +34,8 @@ public class JetsApplication {
 		System.out.println("Welcome to the Jets Application! You are in control"
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
 		System.out.println("Fly, Fight, Win!");
-		
+
 		displayUserMenu();
-//		System.out.println(jetsList);
 
 	}
 
@@ -45,6 +44,7 @@ public class JetsApplication {
 		String file = "jets.txt";
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
+		System.out.println(jetsList);
 		bufReader.close();
 		boolean cont = true;
 		int choice;
@@ -64,12 +64,13 @@ public class JetsApplication {
 			switch (choice) {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
-				System.out.println("Printing entire fleet: " + "\n" + jetsList);
+				System.out.println("Printing entire fleet: ");
+				System.out.println(jetsList);
 				break;
 
 			case 2:
 				// Initiates entire fleet of planes to use fly method
-				
+
 				break;
 
 			case 3:
@@ -165,40 +166,43 @@ public class JetsApplication {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String line;
-			int counter = 0;
-			while (((line = br.readLine()) != null) && counter < 3) {
-				String[] jetInfo = line.split(", ");
-				String model = jetInfo[0];
-				double speed = Double.parseDouble(jetInfo[1]);
-				int range = Integer.parseInt(jetInfo[2]);
-				long price = Long.parseLong(jetInfo[3]);
+			while (((line = br.readLine()) != null)) {
+				int jetNum = 1;
+				if (jetNum < 3) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
 
-				Jet fJ = new FighterJet(model, speed, range, price);
-				jets.add(fJ);
-				counter++;
-			}
-			while (((line = br.readLine()) != null) && counter < 5) {
-				String[] jetInfo = line.split(", ");
-				String model = jetInfo[0];
-				double speed = Double.parseDouble(jetInfo[1]);
-				int range = Integer.parseInt(jetInfo[2]);
-				long price = Long.parseLong(jetInfo[3]);
+					Jet fJ = new FighterJet(model, speed, range, price);
+					jets.add(fJ);
+					++jetNum;
+				}
+				else if (jetNum < 5) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
 
-				Jet cJ = new CargoPlane(model, speed, range, price);
-				jets.add(cJ);
-				counter++;
-			}
-			while (((line = br.readLine()) != null) && counter < 6) {
-				String[] jetInfo = line.split(", ");
-				String model = jetInfo[0];
-				double speed = Double.parseDouble(jetInfo[1]);
-				int range = Integer.parseInt(jetInfo[2]);
-				long price = Long.parseLong(jetInfo[3]);
+					Jet cJ = new CargoPlane(model, speed, range, price);
+					jets.add(cJ);
+					++jetNum;
+				}
+				else if (jetNum < 6) {
+					String[] jetInfo = line.split(", ");
+					String model = jetInfo[0];
+					double speed = Double.parseDouble(jetInfo[1]);
+					int range = Integer.parseInt(jetInfo[2]);
+					long price = Long.parseLong(jetInfo[3]);
 
-				Jet rJ = new JetReg(model, speed, range, price);
-				jets.add(rJ);
-				counter++;
+					Jet rJ = new JetReg(model, speed, range, price);
+					jets.add(rJ);
+					++jetNum;
+				}
 			}
+
 			br.close();
 
 		} catch (IOException e) {
