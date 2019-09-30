@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class JetsApplication {
 
-	AirField airField = new AirField();
+	static AirField airField = new AirField();
 	static Scanner kb = new Scanner(System.in);
 
 	public JetsApplication() {
@@ -42,12 +42,14 @@ public class JetsApplication {
 	private static void displayUserMenu() throws IOException {
 		JetsApplication jetApp = new JetsApplication();
 		String file = "jets.txt";
+		
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
-		System.out.println(jetsList);
-		bufReader.close();
+//		jetList.writeEntireFleet(outFileName, jets);
+//		System.out.println(jetsList);
 		boolean cont = true;
 		int choice;
+		bufReader.close();
 		do {
 			System.out.println("**********______Main Menu______**********");
 			System.out.println("Please choose from the options below: ");
@@ -70,12 +72,12 @@ public class JetsApplication {
 
 			case 2:
 				// Initiates entire fleet of planes to use fly method
-
+				airField.allFly(null);
 				break;
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-
+				
 				break;
 
 			case 4:
@@ -88,19 +90,7 @@ public class JetsApplication {
 				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
 				 * CargoCarrier's loadCargo();
 				 */
-				// Try to turn this into way to look for CargoPlanes?
-//				try (BufferedReader bufIn = new BufferedReader(new FileReader("jets.txt"))) {
-//				      String line;
-//				      while ((line = bufIn.readLine()) != null) {
-//				        if (line.contains("manager")) {
-//				          System.out.println(line);
-//				        }
-//				      }
-//				    }
-//				    catch (IOException e) {
-//				      System.err.println(e);
-//				    }
-//				  
+			  
 
 				break;
 
@@ -124,7 +114,7 @@ public class JetsApplication {
 
 				break;
 			case 9:
-				System.out.println("**Quitting Jets Application**");
+				System.out.println("***Quitting Jets Application***");
 				System.out.println("Thanks for playing! Gotta Jet!");
 				System.out.println("*ZOOOOOOOOOOOOOOOOOOOOOOOOOOOM*");
 				cont = false;
@@ -138,27 +128,24 @@ public class JetsApplication {
 		System.exit(0);
 	}
 
-//	private void writeEntireFleet(String outFileName, List<String> jets) {
-//		try {
-//			FileWriter fw = new FileWriter(outFileName);
-//			PrintWriter pw = new PrintWriter(fw);
-//			for (Jet j : jets) {
-//				StringBuilder sb = new StringBuilder();
-//				sb.append("Model: " + j.getModel());
-//				sb.append('\t');
-//				sb.append("Speed: " + j.getSpeed());
-//				sb.append('\t');
-//				sb.append("Range: " + j.getRange());
-//				sb.append('\t');
-//				sb.append("Price: " + j.getPrice());
-//				pw.println(sb);
-//			}
-//			pw.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	private double fastestJet(List<Jet> jets) {
+		double fastest = 0;
+//		for (Jet j : jets) {
 
+//		}
+		return fastest;
+	}
+	
+	private int longestRange(List<Jet> jets) {
+		int longest = 0;
+	
+		
+		return longest;
+	}
+	
+	private Jet[] createJets(List<Jet> jets) {
+		
+	}
 	private List<Jet> readJets(String file) {
 
 		List<Jet> jets = new ArrayList<>();
@@ -167,7 +154,7 @@ public class JetsApplication {
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			while (((line = br.readLine()) != null)) {
-				int jetNum = 1;
+				int jetNum = 0;
 				if (jetNum < 3) {
 					String[] jetInfo = line.split(", ");
 					String model = jetInfo[0];
@@ -178,8 +165,7 @@ public class JetsApplication {
 					Jet fJ = new FighterJet(model, speed, range, price);
 					jets.add(fJ);
 					++jetNum;
-				}
-				else if (jetNum < 5) {
+				} else if (jetNum < 5) {
 					String[] jetInfo = line.split(", ");
 					String model = jetInfo[0];
 					double speed = Double.parseDouble(jetInfo[1]);
@@ -189,8 +175,7 @@ public class JetsApplication {
 					Jet cJ = new CargoPlane(model, speed, range, price);
 					jets.add(cJ);
 					++jetNum;
-				}
-				else if (jetNum < 6) {
+				} else if (jetNum < 6) {
 					String[] jetInfo = line.split(", ");
 					String model = jetInfo[0];
 					double speed = Double.parseDouble(jetInfo[1]);
