@@ -45,7 +45,7 @@ public class JetsApplication {
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
-		airField.addJet((Jet) jetsList);
+//		airField.addJet((Jet) jetsList);
 //		jetList.writeEntireFleet(outFileName, jets);
 //		System.out.println(jetsList);
 		boolean cont = true;
