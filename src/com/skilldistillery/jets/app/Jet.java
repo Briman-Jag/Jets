@@ -59,7 +59,7 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		return "Jet [Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: $" + price + "]";
+		return "[Jet Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: $" + price + "] \n";
 	}
 
 	@Override

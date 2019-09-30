@@ -65,13 +65,11 @@ public class JetsApplication {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
 				System.out.println("Printing entire fleet: " + "\n" + jetsList);
-				
-
 				break;
 
 			case 2:
 				// Initiates entire fleet of planes to use fly method
-
+				
 				break;
 
 			case 3:
