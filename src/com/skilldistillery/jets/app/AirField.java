@@ -19,8 +19,8 @@ public class AirField {
 		}
 	}
 
-	public void addJet(Jet j) {
-		jets[currentJetIndex] = j;
+	public void addJet(Jet jetsList) {
+		jets[currentJetIndex] = jetsList;
 		currentJetIndex++;
 
 	}

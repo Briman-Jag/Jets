@@ -45,12 +45,12 @@ public class JetsApplication {
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = jetApp.readJets(file);
-//		airField.addJet();
+		airField.addJet((Jet) jetsList);
 //		jetList.writeEntireFleet(outFileName, jets);
 //		System.out.println(jetsList);
 		boolean cont = true;
 		int choice;
-		bufReader.close();
+		
 		do {
 			System.out.println("**********______Main Menu______**********");
 			System.out.println("Please choose from the options below: ");
@@ -78,7 +78,9 @@ public class JetsApplication {
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-
+				if(airField.fJ1.getSpeed() > fJ2.getSpeed()) {
+					
+				}
 				break;
 
 			case 4:
@@ -124,15 +126,16 @@ public class JetsApplication {
 			}
 
 		} while (cont);
+		bufReader.close();
 		kb.close();
 		System.exit(0);
 	}
 
-//	private double fastestJet(List<Jet> jets) {
+//	private double fastestJet(double speed) {
 //		double fastest = 0;
-////		for (Jet j : jets) {
-//
-////		}
+//		if(fJ1.getSpeed() > fJ2.getSpeed()) {
+//			
+//	}
 //		return fastest;
 //	}
 
@@ -184,8 +187,8 @@ public class JetsApplication {
 					int range = Integer.parseInt(jetInfo[2]);
 					long price = Long.parseLong(jetInfo[3]);
 
-					Jet fJ1 = new FighterJet(model, speed, range, price);
-					jets.add(fJ1);
+					Jet fJ2 = new FighterJet(model, speed, range, price);
+					jets.add(fJ2);
 					++jetNum;
 				} else if (jetNum == 3) {
 					String[] jetInfo = line.split(", ");
