@@ -27,33 +27,31 @@ public class JetsApplication {
 	public static void main(String[] args) throws IOException {
 		String file = "jets.txt";
 		JetsApplication jetApp = new JetsApplication();
-		try {
+
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<String> jetsList = new ArrayList<>();
-		
+
 		String line = bufReader.readLine();
 		while (line != null) {
 			jetsList.add(line);
 			line = bufReader.readLine();
 		}
+		System.out.println(jetsList);
 		bufReader.close();
 		jetApp.launch();
-		
-		List<String> jets = jetApp.writeEntireFleet(fileName);
-		String outFileName = "jets.txt";
 
-		System.out.println("Welcome to the Jets Application where you are in control"
+		System.out.println("Welcome to the Jets Application! You are in control"
 				+ " of aircraft worth millions and millions of dollars! No Pressure!");
 		System.out.println("Fly, Fight, Win!");
 ///		pw.printLine(printFleet);
-		jetApp.displayUserMenu();
+//		jetApp.displayUserMenu();
 
 	}
 
 	public void launch() {
 		List<String> jetsList = null;
 
-		List<String> printFleet = readEntireFleet(jetsList);
+//		List<String> printFleet = readEntireFleet(jetsList);
 
 		// Jets already in airfield
 //		Jet j1 = new FighterJet("F-15E Strike Eagle", 1875.0, 2992, 31_001_000);
@@ -83,7 +81,7 @@ public class JetsApplication {
 			switch (choice) {
 			case 1:
 				// Lists entire fleet of jets taken from AirField array
-				System.out.println("Printing entire fleet: " + printFleet);
+				System.out.println("Printing entire fleet: " + jetList);
 
 				break;
 
@@ -183,8 +181,7 @@ public class JetsApplication {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-
-	}
+//	}
 
 	private List<String> readEntireFleet(String jetsList) {
 
