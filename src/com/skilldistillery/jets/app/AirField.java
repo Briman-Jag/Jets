@@ -9,9 +9,7 @@ import java.util.Scanner;
 
 public class AirField {
 
-	private List<Jet> jets;
-	private int currentJetIndex;
-	private String jetType;
+	private List<Jet> jets;;
 
 	public AirField() {
 
@@ -44,47 +42,53 @@ public class AirField {
 		}
 	}
 
-	public void doABarrelRoll(List<Jet> jets) {
-		for (Jet roll: jets) {
-			if (jets instanceof doABarrelRoll(roll)) {
-				
+//	public void doABarrelRoll(List<Jet> jets) {
+//		for (Jet roll: jets) {
+//			if (jets instanceof BarrellRoll) {
+//				
+//			}
+//		}
+//	
+//		
+//	}
+
+//	public void removeJet(Scanner kb) {
+//		int i -1;
+//	}
+
+
+	public void fastestJet(List<Jet> jets) {
+		double fastest = 0;
+		String fastestModel = "";
+		for (Jet jet: jets) {
+			if (((Jet) jet).getSpeed() > fastest) {
+				fastest = ((Jet) jet).getSpeed();
+				fastestModel = ((Jet) jet).getModel();
 			}
 		}
-	
-		
-	}
-
-	public void removeJet(Scanner kb) {
-		int i -1;
-	}
-
-
-	private void fastestJet(List<Jet> jets) {
-		String fastest = "";
-		double speed = 0;
-		for (Jet jet : jets) {
-			if (speed < jet.getSpeed()) {
-				speed = (double) jet.getModel();
-			}
-
-		}
+		System.out.println(fastestModel + " is the fastest at " 
+							+ fastest + " MPH");
 
 	}
 
 	public void longestRange(List<Jet> jets) {
 		int longest = 0;
-		for (Jet longest : jets) {
-			if (longest < ((Jet) jets).getRange()) {
-				longest = ((Jet) jets).getRange();
+		String longestModel = "";
+		for (Jet jet: jets) {
+			if ( ((Jet) jet).getRange() > longest) {
+				longest = ((Jet) jet).getRange();
+				longestModel = ((Jet) jet).getModel();
 			}
 		}
-		System.out.println(l.getModel());
+		System.out.println("Jet with longest range is " + longestModel 
+							+ " with a range of " + longest + " Miles");
 	}
 
-	private void addJets(Scanner kb) {
-
-		jets.add((Jet) this.jets);
-	}
+//	private void addJets(Scanner kb) {
+//		System.out.println("Adding Regular Jet");
+//		System.out.println();
+//		jets.add();
+//	}
 
 	public List<Jet> readJets(String file) {
 

@@ -76,7 +76,7 @@ public class JetsApplication {
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-//				airField.fastestJet(jetsList);
+				airField.fastestJet(jetsList);
 				break;
 
 			case 4:
@@ -100,7 +100,7 @@ public class JetsApplication {
 			case 7:
 				// Allows user to add jet and give model, speed, range and price.
 				// Does not need to be added to text file
-
+			//	airField.addJets();
 				break;
 
 			case 8:
