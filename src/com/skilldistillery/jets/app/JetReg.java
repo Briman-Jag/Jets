@@ -8,13 +8,10 @@ public class JetReg extends Jet implements BarrelRoll{
 		
 	}
 	
-	public void fight() {
-		
-	}
 
 	@Override
 	public void doABarrelRoll() {
-		System.out.println("Do a Barrel Roll!" + "\n" + this.getModel() + "*Barrel Rolls*");
+		System.out.println("Do a Barrel Roll!" + "\n" + "*Barrel Rolls*");
 		
 	}
 	

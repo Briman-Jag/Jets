@@ -36,14 +36,21 @@ public class AirField {
 
 	public void allLoadCargo(List<Jet> jets) {
 		for (Jet cargo : jets) {
-			if (jets instanceof FighterJet()) {
-				System.out.println(cargo.getModel());
+			if (jets instanceof CargoCarrier) {
 				((CargoPlane) cargo).loadCargo();
+				System.out.println(cargo.getModel());
 			}
+
 		}
 	}
-	
+
 	public void doABarrelRoll(List<Jet> jets) {
+		for (Jet roll: jets) {
+			if (jets instanceof doABarrelRoll(roll)) {
+				
+			}
+		}
+	
 		
 	}
 
@@ -51,32 +58,30 @@ public class AirField {
 		int i -1;
 	}
 
-	public void addJet(Jet jetsList) {
-		jets[currentJetIndex] = jetsList;
-		currentJetIndex++;
+
+	private void fastestJet(List<Jet> jets) {
+		String fastest = "";
+		double speed = 0;
+		for (Jet jet : jets) {
+			if (speed < jet.getSpeed()) {
+				speed = (double) jet.getModel();
+			}
+
+		}
 
 	}
 
-//	private double fastestJet(double speed) {
-//	double fastest = 0;
-//	for( int i = 1; i < : speed) {
-//		
-//	}
-//	
-//	return fastest;
-//}
-
-	public int longestRange(List<Jet> jets) {
+	public void longestRange(List<Jet> jets) {
 		int longest = 0;
-		for (Jet l : jets) {
+		for (Jet longest : jets) {
 			if (longest < ((Jet) jets).getRange()) {
 				longest = ((Jet) jets).getRange();
 			}
 		}
-		return longest;
+		System.out.println(l.getModel());
 	}
 
-	private void addJets(List<Jet> jets) {
+	private void addJets(Scanner kb) {
 
 		jets.add((Jet) this.jets);
 	}

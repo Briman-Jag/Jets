@@ -76,26 +76,24 @@ public class JetsApplication {
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-
+//				airField.fastestJet(jetsList);
 				break;
 
 			case 4:
 				// Analyzes entire fleet and finds longest range
-
+				airField.longestRange(jetsList);
 				break;
 
 			case 5:
-				 /* Analyzes entire fleet for jets of type CargoPlane and initiates implemented
-				 * CargoCarrier's loadCargo(); Uses instanceof
-				 */
+				 // Analyzes entire fleet for jets of type CargoPlane and initiates implemented
+				 // CargoCarrier's loadCargo(); 
 				airField.allLoadCargo(jetsList);
 				break;
 
 			case 6:
-				/*
-				 * Analyzes entire fleet for jets of type FighterJet and initiates implemented
-				 * CombatReady's fight(); Use instanceof
-				 */
+				 // Analyzes entire fleet for jets of type FighterJet and initiates implemented
+				 // CombatReady's fight();
+				airField.fightReady(jetsList);
 
 				break;
 
