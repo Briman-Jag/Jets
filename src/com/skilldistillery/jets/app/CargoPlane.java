@@ -7,7 +7,7 @@ public class CargoPlane extends Jet implements CargoCarrier{
 	}
 	
 	public void loadCargo() {
-		System.out.println(this.getModel() + "is locked and loaded!");
+		System.out.println("*Locked and loaded!*");
 		
 	}
 

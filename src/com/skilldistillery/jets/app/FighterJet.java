@@ -14,7 +14,7 @@ public class FighterJet extends Jet implements CombatReady, BarrelRoll{
 
 	@Override
 	public void doABarrelRoll() {
-		System.out.println("Do a Barrel Roll!" + "\n" + this.getModel() + "*Barrel Rolls*");
+		System.out.println("Do a Barrel Roll!" + "\n" + "*Barrel Rolls*");
 		
 	}
 

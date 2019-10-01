@@ -22,7 +22,7 @@ public class JetsApplication {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		launch();
 
@@ -31,9 +31,6 @@ public class JetsApplication {
 	}
 
 	private static void launch() throws IOException {
-		System.out.println("Welcome to the Jets Application! You are in control"
-				+ " of aircraft worth millions and millions of dollars! No Pressure!");
-		System.out.println("Fly, Fight, Win!");
 
 		displayUserMenu();
 
@@ -45,11 +42,12 @@ public class JetsApplication {
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
 		List<Jet> jetsList = airField.readJets(file);
-//		airField.addJet((Jet) jetsList);
-//		jetList.writeEntireFleet(outFileName, jets);
-//		System.out.println(jetsList);
+
 		boolean cont = true;
 		int choice;
+		System.out.println("Welcome to the Jets Application! You are in control"
+				+ " of aircraft worth millions and millions of dollars! No Pressure!");
+		System.out.println("Fly, Fight, Win!");
 
 		do {
 			System.out.println("**********______Main Menu______**********");
@@ -73,13 +71,12 @@ public class JetsApplication {
 
 			case 2:
 				// Initiates entire fleet of planes to use fly method
-//				airField.allFly(null);
-
+				airField.allFly(jetsList);
 				break;
 
 			case 3:
 				// Analyzes entire fleet and finds highest .getSpeed()
-				
+
 				break;
 
 			case 4:
@@ -88,19 +85,10 @@ public class JetsApplication {
 				break;
 
 			case 5:
-				/*
-				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
-				 * CargoCarrier's loadCargo(); Use instanceof
+				 /* Analyzes entire fleet for jets of type CargoPlane and initiates implemented
+				 * CargoCarrier's loadCargo(); Uses instanceof
 				 */
-//				Jet cP = new CargoPlane();
-//				for (Jet cargo : jetsList) {
-//					if ((cP instanceof CargoPlane)) {
-//						(Jet)cP.loadCargo();
-//
-//						System.out.println();
-//
-//					}
-//				}
+				airField.allLoadCargo(jetsList);
 				break;
 
 			case 6:
@@ -108,14 +96,6 @@ public class JetsApplication {
 				 * Analyzes entire fleet for jets of type FighterJet and initiates implemented
 				 * CombatReady's fight(); Use instanceof
 				 */
-//				Jet fJ = new FighterJet();
-//				for (Jet jet : jetsList) {
-//					if ((fJ instanceof FighterJet).fight()) {
-//				 FighterJet jetFight = (FighterJet) dogFight;
-//				 jetFight.fight();
-//						System.out.println();
-//					}
-//				}
 
 				break;
 
@@ -145,30 +125,5 @@ public class JetsApplication {
 		kb.close();
 		System.exit(0);
 	}
-//
-//	private double fastestJet(double speed) {
-//		double fastest = 0;
-//		for( int i = 1; i < : speed) {
-//			
-//		}
-//		
-//		return fastest;
-//	}
-
-	private int longestRange(List<Jet> jets) {
-		int longest = 0;
-		for (Jet l : jets) {
-			if (longest < ((Jet) jets).getRange()) {
-				longest = ((Jet) jets).getRange();
-			}
-		}
-		return longest;
-	}
-
-//	private Jet[] createJets(List<Jet> jets) {
-//		
-//		return jets;
-//	}
-
 
 }
