@@ -44,7 +44,7 @@ public class JetsApplication {
 		String file = "jets.txt";
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(file));
-		List<Jet> jetsList = jetApp.readJets(file);
+		List<Jet> jetsList = airField.readJets(file);
 //		airField.addJet((Jet) jetsList);
 //		jetList.writeEntireFleet(outFileName, jets);
 //		System.out.println(jetsList);
@@ -92,15 +92,15 @@ public class JetsApplication {
 				 * Analyzes entire fleet for jets of type CargoPlane and initiates implemented
 				 * CargoCarrier's loadCargo(); Use instanceof
 				 */
-				Jet cP = new CargoPlane();
-				for (Jet cargo : jetsList) {
-					if ((cP instanceof CargoPlane)) {
-						(Jet)cP.loadCargo();
-
-						System.out.println();
-
-					}
-				}
+//				Jet cP = new CargoPlane();
+//				for (Jet cargo : jetsList) {
+//					if ((cP instanceof CargoPlane)) {
+//						(Jet)cP.loadCargo();
+//
+//						System.out.println();
+//
+//					}
+//				}
 				break;
 
 			case 6:
@@ -145,15 +145,15 @@ public class JetsApplication {
 		kb.close();
 		System.exit(0);
 	}
-
-	private double fastestJet(double speed) {
-		double fastest = 0;
-		for( int i = 1; i < : speed) {
-			
-		}
-		
-		return fastest;
-	}
+//
+//	private double fastestJet(double speed) {
+//		double fastest = 0;
+//		for( int i = 1; i < : speed) {
+//			
+//		}
+//		
+//		return fastest;
+//	}
 
 	private int longestRange(List<Jet> jets) {
 		int longest = 0;
@@ -169,88 +169,6 @@ public class JetsApplication {
 //		
 //		return jets;
 //	}
-	private List<Jet> readJets(String file) {
 
-		List<Jet> jets = new ArrayList<>();
-		try {
-			FileReader fr = new FileReader(file);
-			BufferedReader br = new BufferedReader(fr);
-			String line;
-			while (((line = br.readLine()) != null)) {
-				int jetNum = 1;
-				// Attempt at for loop to read all
-//				for (Jet j : jets) {
-//					String[] jetInfo = line.split(", ");
-//					String model = jetInfo[0];
-//					double speed = Double.parseDouble(jetInfo[1]);
-//					int range = Integer.parseInt(jetInfo[2]);
-//					long price = Long.parseLong(jetInfo[3]);
-//					Jet fJ = new FighterJet(model, speed, range, price);
-//					jets.add(fJ);
-////				}
-				// Works for printing entire fleet, but don't think this is most helpful with
-				// anything else.
-				if (jetNum == 1) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet fJ1 = new FighterJet(model, speed, range, price);
-					jets.add(fJ1);
-					++jetNum;
-				} else if (jetNum == 2) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet fJ2 = new FighterJet(model, speed, range, price);
-					jets.add(fJ2);
-					++jetNum;
-				} else if (jetNum == 3) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet cP1 = new CargoPlane(model, speed, range, price);
-					jets.add(cP1);
-					++jetNum;
-				} else if (jetNum == 4) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet cP2 = new CargoPlane(model, speed, range, price);
-					jets.add(cP2);
-					++jetNum;
-				} else if (jetNum == 5) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet jR1 = new JetReg(model, speed, range, price);
-					jets.add(jR1);
-					++jetNum;
-				}
-
-			}
-			br.close();
-		} catch (
-
-		IOException e) {
-			System.err.println("Problem while reading: " + e.getMessage());
-		}
-
-		return jets;
-	}
 
 }
