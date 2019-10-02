@@ -100,13 +100,14 @@ public class JetsApplication {
 			case 7:
 				// Allows user to add jet and give model, speed, range and price.
 				// Does not need to be added to text file
-			//	airField.addJets();
+				airField.addJets(jetsList);
 				break;
 
 			case 8:
 				// Allows user to delete jet from fleet
 				// Does not need to be deleted from text file
-
+				System.out.println(jetsList);
+				airField.removeJet(jetsList);
 				break;
 			case 9:
 				System.out.println("***Quitting Jets Application***");

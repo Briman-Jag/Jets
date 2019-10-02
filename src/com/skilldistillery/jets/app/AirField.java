@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -52,43 +53,53 @@ public class AirField {
 //		
 //	}
 
+	public void addJets(List<Jet> jets) {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("-Adding Regular Jet-");
+		System.out.println("Enter Model:");
+		String model = kb.nextLine();
+		System.out.println("Enter speed:");
+		double speed = kb.nextDouble();
+		System.out.println("Enter range:");
+		int range = kb.nextInt();
+		System.out.println("Enter price:");
+		long price = kb.nextLong();
+		Jet r = new JetReg(model, speed, range, price);
+		jets.add(r);
+		
+	}
+
 //	public void removeJet(Scanner kb) {
 //		int i -1;
 //	}
 
-
 	public void fastestJet(List<Jet> jets) {
 		double fastest = 0;
+		double fastestMach = 0;
 		String fastestModel = "";
-		for (Jet jet: jets) {
+
+		for (Jet jet : jets) {
 			if (((Jet) jet).getSpeed() > fastest) {
 				fastest = ((Jet) jet).getSpeed();
 				fastestModel = ((Jet) jet).getModel();
 			}
 		}
-		System.out.println(fastestModel + " is the fastest at " 
-							+ fastest + " MPH");
+
+		System.out.println(fastestModel + " is the fastest at " + fastest + " MPH or ");
 
 	}
 
 	public void longestRange(List<Jet> jets) {
 		int longest = 0;
 		String longestModel = "";
-		for (Jet jet: jets) {
-			if ( ((Jet) jet).getRange() > longest) {
+		for (Jet jet : jets) {
+			if (((Jet) jet).getRange() > longest) {
 				longest = ((Jet) jet).getRange();
 				longestModel = ((Jet) jet).getModel();
 			}
 		}
-		System.out.println("Jet with longest range is " + longestModel 
-							+ " with a range of " + longest + " Miles");
+		System.out.println("Jet with longest range is " + longestModel + " with a range of " + longest + " Miles");
 	}
-
-//	private void addJets(Scanner kb) {
-//		System.out.println("Adding Regular Jet");
-//		System.out.println();
-//		jets.add();
-//	}
 
 	public List<Jet> readJets(String file) {
 
