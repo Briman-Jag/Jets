@@ -12,6 +12,7 @@ public class AirField {
 
 	private List<Jet> jets;;
 	Scanner kb = new Scanner(System.in);
+
 	public AirField() {
 
 	}
@@ -26,35 +27,37 @@ public class AirField {
 
 	public void fightReady(List<Jet> jets) {
 		for (Jet jetFight : jets) {
-			if (jets instanceof FighterJet) {
+			if (jetFight instanceof FighterJet) {
 				System.out.println(jetFight.getModel());
 				((FighterJet) jetFight).fight();
-			}
+			} 
 		}
 	}
 
 	public void allLoadCargo(List<Jet> jets) {
 		for (Jet cargo : jets) {
-			if (jets instanceof CargoCarrier) {
-				((CargoPlane) cargo).loadCargo();
+			if (cargo instanceof CargoPlane) {
 				System.out.println(cargo.getModel());
+				((CargoCarrier) cargo).loadCargo();
+
 			}
 
 		}
 	}
 
-//	public void doABarrelRoll(List<Jet> jets) {
-//		for (Jet roll: jets) {
-//			if (jets instanceof BarrellRoll) {
-//				
-//			}
-//		}
-//	
-//		
-//	}
+	public void doABarrelRoll(List<Jet> jets) {
+		for (Jet roll : jets) {
+			if (roll instanceof FighterJet || roll instanceof JetReg) {
+				System.out.println(roll.getModel());
+				((BarrelRoll) roll).doABarrelRoll();
+
+			}
+		}
+
+	}
 
 	public void addJets(List<Jet> jets) {
-		
+
 		System.out.println("-Adding Regular Jet-");
 		System.out.println("Enter Model:");
 		String model = kb.nextLine();
@@ -66,20 +69,20 @@ public class AirField {
 		long price = kb.nextLong();
 		Jet r = new JetReg(model, speed, range, price);
 		jets.add(r);
-		
+
 	}
 
 	public void removeJet(List<Jet> jets) {
 		int jetNum = 1;
 		int choice = 0;
-		for(Jet jet: jets) {
+		for (Jet jet : jets) {
 			System.out.println(jetNum + "- " + jet.getModel());
 			jetNum++;
 		}
 		System.out.println("Enter number of Jet to be removed: ");
 		choice = kb.nextInt();
 		jets.remove(choice - 1);
-		
+
 	}
 
 	public void fastestJet(List<Jet> jets) {
@@ -94,7 +97,7 @@ public class AirField {
 			}
 		}
 
-		System.out.println(fastestModel + " is the fastest at " + fastest + " MPH or ");
+		System.out.println(fastestModel + " is the fastest at " + fastest + " MPH");
 
 	}
 
@@ -117,8 +120,8 @@ public class AirField {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String line;
+			int jetNum = 1;
 			while (((line = br.readLine()) != null)) {
-				int jetNum = 1;
 
 				if (jetNum == 1) {
 					String[] jetInfo = line.split(", ");

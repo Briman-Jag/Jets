@@ -11,7 +11,7 @@ public class JetReg extends Jet implements BarrelRoll{
 
 	@Override
 	public void doABarrelRoll() {
-		System.out.println("Do a Barrel Roll!" + "\n" + "*Barrel Rolls*");
+		System.out.println("Do a Barrel Roll!" + "\n" + "*Does Unnecessary Barrel Rolls*");
 		
 	}
 	

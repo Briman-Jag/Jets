@@ -26,8 +26,6 @@ public class JetsApplication {
 
 		launch();
 
-///		pw.printLine(printFleet);
-//		jetApp.displayUserMenu();
 	}
 
 	private static void launch() throws IOException {
@@ -58,9 +56,10 @@ public class JetsApplication {
 			System.out.println("4 - View jet with longest range");
 			System.out.println("5 - Load all Cargo Jets");
 			System.out.println("6 - Dogfight!");
-			System.out.println("7 - Add a jet to Fleet");
-			System.out.println("8 - Remove a jet from Fleet");
-			System.out.println("9 - Quit");
+			System.out.println("7 - Do A Barrel Roll!");
+			System.out.println("8 - Add a jet to Fleet");
+			System.out.println("9 - Remove a jet from Fleet");
+			System.out.println("10 - Quit");
 			choice = kb.nextInt();
 			switch (choice) {
 			case 1:
@@ -85,30 +84,33 @@ public class JetsApplication {
 				break;
 
 			case 5:
-				 // Analyzes entire fleet for jets of type CargoPlane and initiates implemented
-				 // CargoCarrier's loadCargo(); 
+				// Analyzes entire fleet for jets of type CargoPlane and initiates implemented
+				// CargoCarrier's loadCargo();
 				airField.allLoadCargo(jetsList);
 				break;
 
 			case 6:
-				 // Analyzes entire fleet for jets of type FighterJet and initiates implemented
-				 // CombatReady's fight();
+				// Analyzes entire fleet for jets of type FighterJet and initiates implemented
+				// CombatReady's fight();
 				airField.fightReady(jetsList);
 
 				break;
-
 			case 7:
+
+				airField.doABarrelRoll(jetsList);
+				break;
+			case 8:
 				// Allows user to add jet and give model, speed, range and price.
 				// Does not need to be added to text file
 				airField.addJets(jetsList);
 				break;
 
-			case 8:
+			case 9:
 				// Allows user to delete jet from fleet
 				// Does not need to be deleted from text file
 				airField.removeJet(jetsList);
 				break;
-			case 9:
+			case 10:
 				System.out.println("***Quitting Jets Application***");
 				System.out.println("Thanks for playing! Gotta Jet!");
 				System.out.println("*ZOOOOOOOOOOOOOOOOOOOOOOOOOOOM*");
