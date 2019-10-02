@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class AirField {
 
 	private List<Jet> jets;;
-
+	Scanner kb = new Scanner(System.in);
 	public AirField() {
 
 	}
@@ -54,7 +54,7 @@ public class AirField {
 //	}
 
 	public void addJets(List<Jet> jets) {
-		Scanner kb = new Scanner(System.in);
+		
 		System.out.println("-Adding Regular Jet-");
 		System.out.println("Enter Model:");
 		String model = kb.nextLine();
@@ -69,9 +69,18 @@ public class AirField {
 		
 	}
 
-//	public void removeJet(Scanner kb) {
-//		int i -1;
-//	}
+	public void removeJet(List<Jet> jets) {
+		int jetNum = 1;
+		int choice = 0;
+		for(Jet jet: jets) {
+			System.out.println(jetNum + "- " + jet.getModel());
+			jetNum++;
+		}
+		System.out.println("Enter number of Jet to be removed: ");
+		choice = kb.nextInt();
+		jets.remove(choice - 1);
+		
+	}
 
 	public void fastestJet(List<Jet> jets) {
 		double fastest = 0;

@@ -106,7 +106,6 @@ public class JetsApplication {
 			case 8:
 				// Allows user to delete jet from fleet
 				// Does not need to be deleted from text file
-				System.out.println(jetsList);
 				airField.removeJet(jetsList);
 				break;
 			case 9:
