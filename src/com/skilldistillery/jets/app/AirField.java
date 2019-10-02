@@ -30,7 +30,7 @@ public class AirField {
 			if (jetFight instanceof FighterJet) {
 				System.out.println(jetFight.getModel());
 				((FighterJet) jetFight).fight();
-			} 
+			}
 		}
 	}
 
@@ -47,10 +47,12 @@ public class AirField {
 
 	public void doABarrelRoll(List<Jet> jets) {
 		for (Jet roll : jets) {
-			if (roll instanceof FighterJet || roll instanceof JetReg) {
+			if (roll instanceof FighterJet) {
 				System.out.println(roll.getModel());
 				((BarrelRoll) roll).doABarrelRoll();
-
+			} else if (roll instanceof JetReg) {
+				System.out.println(roll.getModel());
+				((BarrelRoll) roll).doABarrelRoll();
 			}
 		}
 
@@ -120,63 +122,31 @@ public class AirField {
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String line;
-			int jetNum = 1;
 			while (((line = br.readLine()) != null)) {
-
-				if (jetNum == 1) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet fJ1 = new FighterJet(model, speed, range, price);
-					jets.add(fJ1);
-					++jetNum;
-
-				} else if (jetNum == 2) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet fJ2 = new FighterJet(model, speed, range, price);
-					jets.add(fJ2);
-					++jetNum;
-
-				} else if (jetNum == 3) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet cP1 = new CargoPlane(model, speed, range, price);
-					jets.add(cP1);
-					++jetNum;
-
-				} else if (jetNum == 4) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet cP2 = new CargoPlane(model, speed, range, price);
-					jets.add(cP2);
-					++jetNum;
-
-				} else if (jetNum == 5) {
-					String[] jetInfo = line.split(", ");
-					String model = jetInfo[0];
-					double speed = Double.parseDouble(jetInfo[1]);
-					int range = Integer.parseInt(jetInfo[2]);
-					long price = Long.parseLong(jetInfo[3]);
-
-					Jet jR1 = new JetReg(model, speed, range, price);
-					jets.add(jR1);
-					++jetNum;
+				String[] jetInfo = line.split(", ");
+				if (line.contains("FighterJet")) {
+					String model = jetInfo[1];
+					double speed = Double.parseDouble(jetInfo[2]);
+					int range = Integer.parseInt(jetInfo[3]);
+					long price = Long.parseLong(jetInfo[4]);
+					Jet fJ = new FighterJet(model, speed, range, price);
+					jets.add(fJ);
+				}
+				if (line.contains("CargoPlane")) {
+					String model = jetInfo[1];
+					double speed = Double.parseDouble(jetInfo[2]);
+					int range = Integer.parseInt(jetInfo[3]);
+					long price = Long.parseLong(jetInfo[4]);
+					Jet cJ = new CargoPlane(model, speed, range, price);
+					jets.add(cJ);
+				}
+				if (line.contains("JetReg")) {
+					String model = jetInfo[1];
+					double speed = Double.parseDouble(jetInfo[2]);
+					int range = Integer.parseInt(jetInfo[3]);
+					long price = Long.parseLong(jetInfo[4]);
+					Jet jR = new JetReg(model, speed, range, price);
+					jets.add(jR);
 				}
 
 			}
