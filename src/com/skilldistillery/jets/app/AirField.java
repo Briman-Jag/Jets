@@ -12,7 +12,7 @@ public class AirField {
 
 	private List<Jet> jets;;
 	Scanner kb = new Scanner(System.in);
-
+	Scanner bk = new Scanner(System.in);
 	public AirField() {
 
 	}
@@ -69,8 +69,8 @@ public class AirField {
 		int range = kb.nextInt();
 		System.out.println("Enter price:");
 		long price = kb.nextLong();
-		Jet r = new JetReg(model, speed, range, price);
-		jets.add(r);
+		Jet jR = new JetReg(model, speed, range, price);
+		jets.add(jR);
 
 	}
 
